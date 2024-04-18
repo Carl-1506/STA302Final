@@ -7,9 +7,11 @@
 
 #### Workspace setup ####
 library(tidyverse)
+library(openxlsx)
 
 #### Clean data ####
 # Display the first few rows of the dataset
+raw_data <- read.xlsx("data/raw_data/raw_data.xlsx", colNames=TRUE)
 head(raw_data)
 
 # Display the structure of the dataset to understand column names and types
@@ -31,4 +33,6 @@ raw_data <- raw_data[raw_data$ContributionReturned != "Yes", ]
 
 # Save the cleaned data
 write.csv(raw_data, "data/analysis_data/cleaned_data.csv", row.names = FALSE)
+
+# the data is saved as a csv file because I was not able to save it as a parquet file
 
